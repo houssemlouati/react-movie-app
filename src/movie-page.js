@@ -4,11 +4,22 @@ import MoviesContainer from "./components/movie-container";
 import FilterName from "./components/name-filter";
 import RatingFilter from "./components/ratingFilter";
 import Modall from "./components/modal";
+import WithLoading from "./components/loading-hoc";
 class MoviePage extends React.Component {
   state = {
     movies,
     movieName: "",
     ratingCountFilter: "",
+    isLoading: true,
+  };
+  componentDidMount = () => {
+    setTimeout(
+      () =>
+        this.setState({
+          isLoading: false,
+        }),
+      5000
+    );
   };
 
   handleSearch = (input) => {
@@ -48,7 +59,7 @@ class MoviePage extends React.Component {
         <div>
           <Modall add={this.addMovie} />
         </div>
-        <MoviesContainer movies={filterMovie} />
+        <MoviesContainer movies={filterMovie} load={this.state.isLoading} />
       </div>
     );
   }

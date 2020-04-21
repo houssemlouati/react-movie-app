@@ -1,5 +1,6 @@
 import React from "react";
 import MovieCard from "./movie-card";
+import WithLoading from "./loading-hoc";
 
 class MoviesContainer extends React.Component {
   render() {
@@ -14,4 +15,4 @@ class MoviesContainer extends React.Component {
   }
 }
 
-export default MoviesContainer;
+export default WithLoading(MoviesContainer);
